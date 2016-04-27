@@ -11,7 +11,6 @@ def semanticRichness(text):
     wordCount = dict((x,0) for x in words)
     for word in text:
         wordCount[word] += 1
-    print(wordCount["."])
     return len(words)/(len(text))
 
 def uniqueWords(text):
@@ -29,7 +28,7 @@ def uniqueWords(text):
         i = 0
         while i < num_unique:
             if words[key] == i:
-                count = 999
+               # count = 999
                 unique[i].append(len(key))
             i = i + 1
     lengths = []

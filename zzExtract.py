@@ -86,6 +86,9 @@ def isWord(word):
        return False
     return True
 
+def getKey(item):
+    return item[0]
+
 #gives the location and simple complexity of every word only used once
 def singlesComplexity(text):
     words = {}
@@ -99,6 +102,7 @@ def singlesComplexity(text):
         if words[key] > 0:
             data = (words[key],simpleComplexity(key))
             singles.append(data)
+    singles = sorted(singles, key=getKey)
     return singles
 
 #gives the complexity of the 50 most used words

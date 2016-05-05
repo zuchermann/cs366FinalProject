@@ -5,11 +5,11 @@
 			"major" : 7,
 			"minor" : 2,
 			"revision" : 0,
-			"architecture" : "x86",
+			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 19.0, 98.0, 722.0, 480.0 ],
+		"rect" : [ 34.0, 98.0, 469.0, 480.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -38,6 +38,36 @@
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-7",
+					"maxclass" : "button",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"patching_rect" : [ 586.0, 316.0, 24.0, 24.0 ],
+					"style" : ""
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-3",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 586.0, 366.0, 111.0, 22.0 ],
+					"saved_object_attributes" : 					{
+						"filename" : "featureReader.js",
+						"parameter_enable" : 0
+					}
+,
+					"style" : "",
+					"text" : "js featureReader.js"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-84",
 					"maxclass" : "newobj",
 					"numinlets" : 2,
@@ -56,7 +86,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "float" ],
-					"patching_rect" : [ 161.0, 385.0, 31.0, 22.0 ],
+					"patching_rect" : [ 128.0, 387.0, 31.0, 22.0 ],
 					"style" : "",
 					"text" : "+ 0."
 				}
@@ -69,7 +99,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "bang", "bang", "int" ],
-					"patching_rect" : [ 51.0, 112.0, 40.0, 22.0 ],
+					"patching_rect" : [ 55.0, 116.0, 40.0, 22.0 ],
 					"style" : "",
 					"text" : "t b b i"
 				}
@@ -177,7 +207,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 51.0, 497.0, 50.0, 35.0 ],
 					"style" : "",
-					"text" : "82.646172"
+					"text" : "71.334601"
 				}
 
 			}
@@ -277,7 +307,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "bang", "int" ],
-					"patching_rect" : [ 313.0, 426.0, 30.0, 22.0 ],
+					"patching_rect" : [ 313.0, 404.0, 30.0, 22.0 ],
 					"style" : "",
 					"text" : "t b i"
 				}
@@ -329,7 +359,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 109.0, 253.0, 252.0, 22.0 ],
+					"patching_rect" : [ 109.0, 208.0, 252.0, 22.0 ],
 					"style" : "",
 					"text" : "dict.unpack semanticRichness: uniqueWords:"
 				}
@@ -367,7 +397,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 109.0, 161.0, 60.0, 22.0 ],
+					"patching_rect" : [ 109.0, 116.0, 60.0, 22.0 ],
 					"style" : "",
 					"text" : "loadbang"
 				}
@@ -380,7 +410,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 109.0, 191.0, 116.0, 22.0 ],
+					"patching_rect" : [ 109.0, 146.0, 116.0, 22.0 ],
 					"style" : "",
 					"text" : "import features.json"
 				}
@@ -393,7 +423,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 4,
 					"outlettype" : [ "dictionary", "", "", "" ],
-					"patching_rect" : [ 109.0, 222.0, 101.0, 22.0 ],
+					"patching_rect" : [ 109.0, 177.0, 101.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"embed" : 0,
 						"parameter_enable" : 0
@@ -641,6 +671,15 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-3", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-7", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-71", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -730,7 +769,13 @@
 
 			}
  ],
-		"dependency_cache" : [  ],
+		"dependency_cache" : [ 			{
+				"name" : "featureReader.js",
+				"bootpath" : "~/Documents/school/cs366/proj",
+				"type" : "TEXT",
+				"implicit" : 1
+			}
+ ],
 		"autosave" : 0
 	}
 

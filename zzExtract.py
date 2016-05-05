@@ -6,7 +6,7 @@ from nltk.book import text2
 punctuation = "!?...,;:-(){}[]'\"\\&*_$"
 letters = "abcedefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 numbers = "1234567890"
-vowels = "aeiou"
+vowels = "aeiouAEIOU"
 
 def semanticRichness(text):
     words = set()
@@ -61,7 +61,7 @@ def avgSentenceLength(text):
                 acc +=1
     return((len(text) - acc)/numSent)
 
-def simpleCompexity(word):
+def simpleComplexity(word):
     i = 0
     for lett in word:
         if lett in vowels:
@@ -75,7 +75,7 @@ def isWord(word):
        return False
     return True
 
-def singlesCompexity(text):
+def singlesComplexity(text):
     words = {}
     singles = {}
     for i in range(len(text)):
@@ -85,11 +85,11 @@ def singlesCompexity(text):
             words[text[i]] = i
     for key in words:
         if words[key] > 0:
-            data = {'location': i/len(text),'complexity': simpleCompexity(key)}
+            data = {'location': i,'complexity': simpleComplexity(key)}
             singles[key] = data
     return singles
 
-def mostUsedCompexity(text):
+def mostUsedComplexity(text):
     words = {}
     for i in range(len(text)):
         if isWord(text[i]):
@@ -103,17 +103,26 @@ def mostUsedCompexity(text):
     sort = sort[len(sort)-51:]
     for key in words:
         if key in sort:
-            mostUsed[key] = simpleCompexity(key)
-    return mostUsed 
+            mostUsed[key] = simpleComplexity(key)
+    return mostUsed
+
+def percentVerbs(taggedText):
+    count = 0
+    for (x,y) in taggedText:
+        if y is "VB":
+            count += 1
+    return 100 * (count/len(taggedText))
 
 
 def toJSON(text):
     data = {}
-    #use moby dick for testing
+    taggedText = nltk.pos_tag(text)
+    data['length'] = len(text)
     data['semanticRichness'] = semanticRichness(text)
     data['uniqueWords'] = uniqueWords(text)
     data['averageSentenceLength'] = avgSentenceLength(text)
-    data['singlesCompexity'] = singlesCompexity(text)
+    data['singlesCompexity'] = singlesComplexity(text)
     data['mostUsedComplexity'] = mostUsedComplexity(text)
+    data['percentVerbs'] = percentVerbs(taggedText)
     with open("features.json", "wt") as out_file:
         json.dump(data, out_file)

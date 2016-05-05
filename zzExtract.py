@@ -1,5 +1,6 @@
 import nltk
 import json
+import os
 from nltk.book import text1
 from nltk.book import text2
 
@@ -143,5 +144,11 @@ def toJSON(text):
     data['singlesComplexity'] = singlesComplexity(text)
     data['mostUsedComplexity'] = mostUsedComplexity(text)
     data['percentVerbs'] = percentVerbs(taggedText)
-    with open("features.json", "wt") as out_file:
-        json.dump(data, out_file)
+    return data
+
+def all():
+        books = nltk.corpus.gutenberg.fileids()
+        for book in books:
+            with open("gutenberg/" + os.path.splitext(book)[0] + ".json", "wt") as out_file:
+                data = toJSON(nltk.corpus.gutenberg.words(book))
+                json.dump(data, out_file)

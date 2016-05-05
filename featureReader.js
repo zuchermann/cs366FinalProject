@@ -1,3 +1,23 @@
+
+function out(val){
+			outlet(0, val);
+		}
+
+function sendDelays(comp){
+	
+	var i = 0;
+	var len = comp.length;
+	while (i < len){
+		var delay = comp[i][0]; //1 second
+		prevLocation = comp[i][0];
+		
+		//setTimeout(out, delay);
+		var tsk = new Task(out, this, comp[i][1]);
+		tsk.schedule(delay/10) 
+		i++;
+	}
+}
+
 function readlines(s)
 {
 	var f = new File(s);
@@ -15,7 +35,7 @@ function readlines(s)
 		}
 		//outlet(0, JSONString);
 		var parsed = JSON.parse(JSONString);
-		outlet(0, parsed.semanticRichness);
+		sendDelays(parsed.singlesComplexity);
 		f.close();
 	} else {
 		post("could not open file: " + s + "\n");

@@ -109,6 +109,7 @@ def singlesComplexity(text):
 def mostUsedComplexity(text):
     words = {}
     for i in range(len(text)):
+
         if isWord(text[i]):
             if text[i] in words.keys():
                 words[text[i]] += 1
@@ -139,7 +140,7 @@ def toJSON(text):
     data['semanticRichness'] = semanticRichness(text)
     data['uniqueWords'] = uniqueWords(text)
     data['averageSentenceLength'] = avgSentenceLength(text)
-    data['singlesCompexity'] = singlesComplexity(text)
+    data['singlesComplexity'] = singlesComplexity(text)
     data['mostUsedComplexity'] = mostUsedComplexity(text)
     data['percentVerbs'] = percentVerbs(taggedText)
     with open("features.json", "wt") as out_file:

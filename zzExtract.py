@@ -8,6 +8,7 @@ letters = "abcedefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 numbers = "1234567890"
 vowels = "aeiouAEIOU"
 
+# gives the percentage of differant words used over total number of words
 def semanticRichness(text):
     words = set()
     count = []
@@ -16,17 +17,23 @@ def semanticRichness(text):
         words.add(word)
     return len(words)/(len(text))
 
+# returns an array where each slot i has the
+# average length of words used i times
 def uniqueWords(text):
     unique = []
     num_unique = 200
+    # create 200 lists
     for i in range(num_unique):
         unique.append(list())
     words = {}
+    # get each word and the number of times it is used
     for word in text:
         if word in words.keys():
             words[word] = words[word] + 1
         else:
             words[word] = 1
+    # put each word that is used less than 200 times
+    # in a list with other words used with the same frequency 
     for key in words.keys():
         i = 0
         while i < num_unique:
@@ -34,6 +41,7 @@ def uniqueWords(text):
                 unique[i].append(len(key))
             i = i + 1
     lengths = []
+    # get the average length of each list and put those lengths in an array
     for ls in unique:
         val = 0
         if len(ls) != 0:
@@ -45,6 +53,7 @@ def uniqueWords(text):
     return lengths
 
 
+# gives the average sentance length
 def avgSentenceLength(text):
     prevPunc = 0
     numSent = 0
@@ -61,6 +70,7 @@ def avgSentenceLength(text):
                 acc +=1
     return((len(text) - acc)/numSent)
 
+# gives the complexity defined as the percentage of vowels
 def simpleComplexity(word):
     i = 0
     for lett in word:
@@ -68,6 +78,7 @@ def simpleComplexity(word):
             i += 1
     return 100 * (i/len(word))
 
+# tells if the stirng is a word
 def isWord(word):
     if word[0] in punctuation:
         return False
@@ -75,6 +86,7 @@ def isWord(word):
        return False
     return True
 
+#gives the location and simple complexity of every word only used once
 def singlesComplexity(text):
     words = {}
     singles = {}
@@ -85,10 +97,11 @@ def singlesComplexity(text):
             words[text[i]] = i
     for key in words:
         if words[key] > 0:
-            data = {'location': i,'complexity': simpleComplexity(key)}
+            data = {'location': words[key],'complexity': simpleComplexity(key)}
             singles[key] = data
     return singles
 
+#gives the complexity of the 50 most used words
 def mostUsedComplexity(text):
     words = {}
     for i in range(len(text)):
@@ -106,14 +119,15 @@ def mostUsedComplexity(text):
             mostUsed[key] = simpleComplexity(key)
     return mostUsed
 
+# gives the percentage of the tagged text that is verbs
 def percentVerbs(taggedText):
     count = 0
     for (x,y) in taggedText:
-        if y is "VB":
+        if y == "VB":
             count += 1
     return 100 * (count/len(taggedText))
 
-
+#extracts features from the text and exports them as a JSON
 def toJSON(text):
     data = {}
     taggedText = nltk.pos_tag(text)

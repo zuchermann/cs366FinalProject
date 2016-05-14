@@ -38,6 +38,31 @@
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-19",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 670.0, 50.0, 50.0, 22.0 ],
+					"style" : ""
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-4",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ 550.0, 104.0, 76.0, 22.0 ],
+					"style" : "",
+					"text" : "py zzExtract"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-73",
 					"linecount" : 2,
 					"maxclass" : "comment",
@@ -1445,8 +1470,8 @@
 			}
  ],
 		"parameters" : 		{
-			"obj-8" : [ "live.gain~", "live.gain~", 0 ],
-			"obj-11" : [ "live.gain~[1]", "live.gain~", 0 ]
+			"obj-11" : [ "live.gain~[1]", "live.gain~", 0 ],
+			"obj-8" : [ "live.gain~", "live.gain~", 0 ]
 		}
 ,
 		"dependency_cache" : [ 			{
@@ -1460,6 +1485,10 @@
 				"bootpath" : "~/Documents/zach/proj",
 				"type" : "gDSP",
 				"implicit" : 1
+			}
+, 			{
+				"name" : "py.mxo",
+				"type" : "iLaX"
 			}
  ],
 		"autosave" : 0

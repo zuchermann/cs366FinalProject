@@ -152,6 +152,14 @@ def all():
             data = toJSON(nltk.corpus.gutenberg.words(book))
             json.dump(data, out_file)
 
+def getGuten():
+    return nltk.corpus.gutenberg.fileids()
+
+def extractGuten(theText):
+    with open("features.json", "wt") as out_file:
+        data = toJSON(nltk.corpus.gutenberg.words(theText))
+        json.dump(data, out_file)
+
 def doText1():
     return toJSON(text1)
 

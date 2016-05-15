@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 38.0, 79.0, 615.0, 655.0 ],
+		"rect" : [ 38.0, 79.0, 953.0, 655.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -37,32 +37,6 @@
 		"style" : "",
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
-				"box" : 				{
-					"id" : "obj-23",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 883.0, 19.0, 53.0, 22.0 ],
-					"style" : "",
-					"text" : "doText1"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-64",
-					"maxclass" : "newobj",
-					"numinlets" : 2,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 767.0, 175.0, 76.0, 22.0 ],
-					"style" : "",
-					"text" : "py zzExtract"
-				}
-
-			}
-, 			{
 				"box" : 				{
 					"id" : "obj-73",
 					"linecount" : 2,
@@ -452,7 +426,7 @@
 					"outlettype" : [ "float", "float", "float", "float", "list", "" ],
 					"patching_rect" : [ 853.0, 464.0, 256.0, 64.0 ],
 					"style" : "",
-					"vzoom" : 100.0
+					"vzoom" : 66.666664
 				}
 
 			}
@@ -466,7 +440,7 @@
 					"outlettype" : [ "float", "float", "float", "float", "list", "" ],
 					"patching_rect" : [ 586.0, 464.0, 256.0, 64.0 ],
 					"style" : "",
-					"vzoom" : 260817.0
+					"vzoom" : 15.0
 				}
 
 			}
@@ -681,7 +655,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 56.0, 448.0, 50.0, 35.0 ],
 					"style" : "",
-					"text" : "42.632118"
+					"text" : "35.869682"
 				}
 
 			}
@@ -989,15 +963,6 @@
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-20", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-64", 1 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-23", 0 ]
 				}
 
 			}
@@ -1495,10 +1460,6 @@
 				"bootpath" : "~/Documents/zach/proj",
 				"type" : "gDSP",
 				"implicit" : 1
-			}
-, 			{
-				"name" : "py.mxo",
-				"type" : "iLaX"
 			}
  ],
 		"autosave" : 0

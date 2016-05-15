@@ -1,8 +1,6 @@
 import nltk
 import json
 import os
-from nltk.book import text1
-from nltk.book import text2
 
 punctuation = "!?...,;:-(){}[]'\"\\&*_$"
 letters = "abcedefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -69,7 +67,7 @@ def avgSentenceLength(text):
             acc += 1
             if(text[i] == "-"):
                 acc +=1
-    return((len(text) - acc)/numSent)
+    return((len(text) - acc)/max(1, numSent))
 
 # gives the complexity defined as the percentage of vowels
 def simpleComplexity(word):
@@ -146,9 +144,24 @@ def toJSON(text):
     data['percentVerbs'] = percentVerbs(taggedText)
     return data
 
+
 def all():
-        books = nltk.corpus.gutenberg.fileids()
-        for book in books:
-            with open("gutenberg/" + os.path.splitext(book)[0] + ".json", "wt") as out_file:
-                data = toJSON(nltk.corpus.gutenberg.words(book))
-                json.dump(data, out_file)
+    books = nltk.corpus.gutenberg.fileids()
+    for book in books:
+        with open("gutenberg/" + os.path.splitext(book)[0] + ".json", "wt") as out_file:
+            data = toJSON(nltk.corpus.gutenberg.words(book))
+            json.dump(data, out_file)
+
+def doText1():
+    return toJSON(text1)
+
+
+def extractFile(path):
+    words = []
+    with open(path, 'r') as f:
+        read_data = f.read()
+        words = nltk.word_tokenize(read_data)
+    data = toJSON(words)
+    with open("features.json", "wt") as out_file:
+        json.dump(data, out_file)
+    

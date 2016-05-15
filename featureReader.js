@@ -68,7 +68,7 @@ function writeBuffer(){
 	x.import_json("features.json");
 	var xjson = JSON.parse(x.stringify());
 	var v = xjson.singlesComplexity;
-	post("length:", v.length, v[0], "\n");
+	//post("length:", v.length, v[0], "\n");
 	var samplesCh1 = [];
 	var samplesCh2 = [];
 	//buf.framecount();
@@ -77,7 +77,7 @@ function writeBuffer(){
 	for (var i = 0; i < v.length; i++){
 		samplesCh1.push(v[i][0]);
 		samplesCh2.push(v[i][1]);
-		post(v[i],"\n");
+		//post(v[i],"\n");
 		maxVal1 = Math.max(v[i][0], maxVal1);
 		maxVal2 = Math.max(v[i][1], maxVal2);
 	}

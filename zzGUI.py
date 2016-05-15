@@ -14,11 +14,13 @@ root.geometry("250x125")
 
 #menubar
 menu = Menu(root)
+help_menu = Menu(menu)
 root.config(menu=menu)
 NLTK_texts = Menu(menu)
 Guten = Menu(NLTK_texts)
 menu.add_cascade(label = "NLTK texts", menu = NLTK_texts)
-menu.add_command(label = "Help", command = lambda: os.system("open help.txt"))
+menu.add_cascade(label = "Help", menu = help_menu)
+help_menu.add_command(label = "Open Feature Extractor Help", command = lambda: os.system("open help.txt"))
 NLTK_texts.add_cascade(label = "Gutenberg", menu = Guten)
 
 #menubar: Gutenberg stuff

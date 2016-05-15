@@ -1,5 +1,6 @@
 from tkinter import *
 import zzExtract
+import copy
 
 #create the window
 root = Tk()
@@ -8,6 +9,8 @@ root = Tk()
 root.title("Feature Extractor")
 root.geometry("250x125")
 
+    
+
 #menubar
 menu = Menu(root)
 root.config(menu=menu)
@@ -15,9 +18,16 @@ NLTK_texts = Menu(menu)
 Guten = Menu(NLTK_texts)
 menu.add_cascade(label = "NLTK texts", menu = NLTK_texts)
 NLTK_texts.add_cascade(label = "Gutenberg", menu = Guten)
+
+#menubar: Gutenberg stuff
+def guten(text):
+    labeltext.set("EXTRACTING FEATURES FROM")
+    zzExtract.extractGuten(text)
+    labeltext.set("FEATURES EXTRACTED!")
+def makeGutenFunc(text):
+    return lambda: guten(text)
 for text in zzExtract.getGuten():
-    Guten.add_command(label = text,
-                      command = lambda: print(text))
+    Guten.add_command(label = text, command = makeGutenFunc(text))
 
 #status
 labeltext = StringVar()

@@ -1,6 +1,8 @@
 import nltk
 import json
 import os
+import re
+
 
 punctuation = "!?...,;:-(){}[]'\"\\&*_$"
 letters = "abcedefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -127,7 +129,17 @@ def mostUsedComplexity(text):
 def percentVerbs(taggedText):
     count = 0
     for (x,y) in taggedText:
-        if y == "VB":
+        pattern = re.compile("VB")
+        if pattern.search(y):
+            count += 1
+    return 100 * (count/len(taggedText))
+
+#gives the percentage of the tagged text that is Nouns
+def percentNoun(taggedText):
+    count = 0
+    for (x,y) in taggedText:
+        pattern = re.compile("NN")
+        if pattern.search(y):
             count += 1
     return 100 * (count/len(taggedText))
 

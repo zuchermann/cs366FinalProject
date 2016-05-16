@@ -44,7 +44,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 665.0, 547.0, 143.0, 33.0 ],
+					"patching_rect" : [ 665.0, 547.0, 146.0, 33.0 ],
 					"style" : "",
 					"text" : "distance between current word and next word"
 				}
@@ -162,7 +162,7 @@
 			}
 , 			{
 				"box" : 				{
-					"code" : "History phs(0.0); //phase for current word (how long to play the word)\r\nHistory inc(0.1); //increment for phs\r\nHistory buff_idx(0); //current index in resultBuffer\r\nHistory ch1Val(0.0); //chanel 1 of result buffer (word index in text)\r\nHistory ch2Val(0.0); //chanel 2 of result buffer (complexity of word)\r\nHistory wordchange(0.0); //for debugging: distance between current word and next word \r\n\r\nphs_prev = phs; // Store it before increment...\r\nphs += in1/inc;\r\nphs = wrap(phs,0,1.);\r\n\r\ndeltaPhs = abs(phs - phs_prev);\r\nprevCh1Val = ch1Val;\r\n\r\nif (deltaPhs > 0.5) {//new word!\r\n\tbuff_idx += 1;\r\n\tbuff_idx1 = wrap(buff_idx + 1,0,in2-1);//since we want to know distance between current word and next word, we use buff + 1 \r\n\tbuff_idx2 = wrap(buff_idx,0,in2-1);\r\n\tch1Val = peek(buff,buff_idx1,0);\r\n\tch2Val = peek(buff,buff_idx2,1);\r\n\t\r\n\tinc = (samplerate*max(1 , (ch1Val - prevCh1Val)));\r\n\twordchange = max(1 , (ch1Val - prevCh1Val));\r\n}\r\n\r\nout1 = ch1Val;\r\nout2 = ch2Val;\r\nout3 = phs;\r\nout4 = buff_idx;\r\nout5 = wordchange;\r\n//",
+					"code" : "History phs(0.0); //phase for current word (how long to play the word)\r\nHistory inc(0.1); //increment for phs\r\nHistory buff_idx(0); //current index in resultBuffer\r\nHistory ch1Val(0.0); //chanel 1 of result buffer (word index in text)\r\nHistory ch2Val(0.0); //chanel 2 of result buffer (complexity of word)\r\nHistory wordchange(0.0); //for debugging: distance between current word and next word \r\n\r\nphs_prev = phs; // Store it before increment...\r\nphs += in1/inc;\r\nphs = wrap(phs,0,1.);\r\n\r\ndeltaPhs = abs(phs - phs_prev);\r\nprevCh1Val = ch1Val;\r\n\r\nif (deltaPhs > 0.5) {//new word!\r\n\tbuff_idx += 1;\r\n\tbuff_idx1 = min (buff_idx + 1, in2-1);\r\n\tbuff_idx2 = min (buff_idx,in2-1);\r\n\t//buff_idx1 = wrap(buff_idx + 1,0,in2-1);//since we want to know distance between current word and next word, we use buff + 1 \r\n\t//buff_idx2 = wrap(buff_idx,0,in2-1);\r\n\tch1Val = peek(buff,buff_idx1,0);\r\n\tch2Val = peek(buff,buff_idx2,1);\r\n\t\r\n\tinc = (samplerate*max(1 , (ch1Val - prevCh1Val)));\r\n\twordchange = max(1 , (ch1Val - prevCh1Val));\r\n}\r\n\r\nout1 = ch1Val;\r\nout2 = ch2Val;\r\nout3 = phs;\r\nout4 = buff_idx;\r\nout5 = wordchange;\r\n//",
 					"fontface" : 0,
 					"fontname" : "Arial",
 					"fontsize" : 12.0,

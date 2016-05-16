@@ -1,3 +1,4 @@
+from tkinter import filedialog
 from tkinter import *
 import zzExtract
 import copy
@@ -25,9 +26,10 @@ NLTK_texts.add_cascade(label = "Gutenberg", menu = Guten)
 
 #menubar: Gutenberg stuff
 def guten(text):
-    labeltext.set("EXTRACTING FEATURES FROM")
+    labeltext.set("EXTRACTING FEATURES")
     zzExtract.extractGuten(text)
     labeltext.set("FEATURES EXTRACTED!")
+    
 def makeGutenFunc(text):
     return lambda: guten(text)
 for text in zzExtract.getGuten():
@@ -41,10 +43,10 @@ label1.pack()
 
 #file stuff
 def extractfromfile():
-    root.fileName = filedialog.askopenfilename( filetypes = () )
+    fileName = filedialog.askopenfilename( filetypes = () )
     labeltext.set("EXTRACTING FEATURES...")
     try:
-        zzExtract.extractFile(root.fileName)
+        zzExtract.extractFile(fileName)
         labeltext.set("FEATURES EXTRACTED!")
     except:
         labeltext.set("EXTRACTION FAILED!")

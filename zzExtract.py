@@ -168,7 +168,8 @@ def getGuten():
     return nltk.corpus.gutenberg.fileids()
 
 def extractGuten(theText):
-    with open("features.json", "wt") as out_file:
+    DIR = "../../../" 
+    with open(DIR + "features.json", "wt") as out_file:
         data = toJSON(nltk.corpus.gutenberg.words(theText))
         json.dump(data, out_file)
 
@@ -182,6 +183,6 @@ def extractFile(path):
         read_data = f.read()
         words = nltk.word_tokenize(read_data)
     data = toJSON(words)
-    with open("features.json", "wt") as out_file:
+    with open("../../../" + "features.json", "wt") as out_file:
         json.dump(data, out_file)
     

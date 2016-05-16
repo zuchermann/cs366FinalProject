@@ -1,1 +1,11 @@
-Test help doc
+To extract features from a standard text:
+	1: Click Select a file button
+	2: Click text file to extact features
+	3: Wait until features have been extracted
+
+To extract features from pre-loaded books
+	1: Click on NLTK texts
+	2: Mouse over Gutenberg
+	3: Click text to extract features
+
+FEATURE EXTRACTOR IS MEANT TO WORK ON NON-TOKENIZED TEXTS ONLY
